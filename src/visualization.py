@@ -5,7 +5,10 @@ import seaborn as sns
 def get_visualizations(df, output_path="outputs/plots"):
     os.makedirs(output_path, exist_ok=True)
 
-    numeric_columns = df.select_dtypes(include=["number"]).columns
+    numeric_columns = [
+        col for col in df.select_dtypes(include=["number"]).columns
+        if col.lower() not in ["id", "index"]
+    ]
 
 
     #For feature distribution plots
