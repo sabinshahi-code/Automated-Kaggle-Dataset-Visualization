@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Automated Analysis Report
+        </title>
+        <style>
+            body {font-family: Arial, sans-serif; margin: 40px; }
+            h1,h2 {color: #2c3e50; }
+            table { border-collapse: collapse; width:100%; margin-bottom: 30px; }
+            th, td { border: 1px solid #ddd; padding: 8px; }
+            th { background-color: #f4f4f4;}
+            img { max-width: 600px; margin: 20px 0;}
+        </style>
+    </head>
+    <body>
+        <h1> Automated Analysis Report</h1>
+
+        <h2>Overview</h2>
+        <p><strong>Rows:</strong> {{ rows }}</h2>
+        <p><strong>Columns:</strong> {{ columns }}</p>
+
+        <h2> Summary Stats: </h2>
+        {{ summary_tbl | safe }}
+
+        <h2> Missing Values </h2>
+        {{ missing_tbl | safe}}
+
+        <h2> Visualizations </h2>
+        {% for image in images %}
+            <img src="{{ image }}" alt="plot" width="600">
+        {% endfor %}
+    </body>
+</html>
